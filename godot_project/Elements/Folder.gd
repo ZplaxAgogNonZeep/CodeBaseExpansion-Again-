@@ -6,7 +6,8 @@ class_name Folder
 
 var children: Array
 
-var position_grid_parent :Vector2 #position dans la grille en tant que parent
+var position_grid_parent :Vector2 #position dans la grille en tant que parent 
+#position in grid as parent
 
 var cell_amount_x =7
 var cell_amount_y =5
@@ -105,6 +106,7 @@ func delete_scene(node_source:Node2D):
 
 ######################
 # AJOUTS D'ELEMENTS  #
+# ADDED ELEMENTS #
 ######################
 
 func addChild(child):
@@ -200,6 +202,7 @@ func addSablier(_position:Vector2):
 
 ######################
 # ACCESSEURS BASIQUE #
+# BASIC ACCESSORS #
 ######################
 
 func print():

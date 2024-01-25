@@ -1,5 +1,6 @@
 extends Node2D
 
+# Console takes the players input and parses it into a command to send to the Commands script.
 
 signal hide_credits()
 
@@ -44,6 +45,7 @@ func _physics_process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# No clue what tab is supposed to do here tbh -A
 	if tab_hits_life > 0:
 		tab_hits_life -= 1
 	else:
@@ -130,23 +132,27 @@ func add_to_command_history(message: String):
 		command_history.remove(0)
 	add_to_message_history(message)
 
-
+# THIS IS WHERE THE MAGIC HAPPENS
 func _on_Input_text_entered(new_text: String) -> void:
 	command_history_index = -1
 	#print("Console text entered: %s" % new_text)
 	if len(new_text) == 0:
 		return
 		
+	# Adds the string to the command history
 	add_to_command_history(new_text)
 	
 	input_node.clear()
 	
+	# Converts the text to lowercase -A
 	var tlower: String = new_text.to_lower()
+	# Splits the text by spaces -A
 	var splitted_tlower = tlower.split(" ")
 	#tlower = splitted_tlower[0]
 	var info1 = ""
 	if splitted_tlower.size()>1:
 		info1=splitted_tlower[1]
+	# info1 seems to be used to determine the contents of a command ex. download's password and cd's password
 	
 	##################
 	# DEBUG COMMANDS #
@@ -168,6 +174,7 @@ func _on_Input_text_entered(new_text: String) -> void:
 	##################
 	# CHEAT CODES    #
 	##################
+	# Entering this one before the game starts crashes the game - A
 	elif tlower == "cosmetics":
 		Commands.command_toggle_cursor()
 	elif tlower == "aezakmi":

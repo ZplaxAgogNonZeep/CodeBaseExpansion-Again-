@@ -1,17 +1,23 @@
 extends Node2D
+# Elements are each individual item that can show up in the game world -A
 
 class_name Element
 
+
 # nom de l'élément
+# element name
 var name_element : String
 
 # Dossier parent
+# Parent folder
 var parent
 
 # position dans la grille (unité : case) en tant qu'enfant
+# position in grid (unit: box) as child
 var position_grid : Vector2
 
 # type de l'élément
+# element type
 enum Type{
 	FOLDER,
 	PASSWORD,
@@ -24,6 +30,7 @@ enum Type{
 var type
 
 # Paramètre de protection
+# Protection setting
 enum Protection{
 	JAUNE,
 	ORANGE,
@@ -34,9 +41,13 @@ var protection_level
 # Mot de passe pour accéder au contenu
 # à ne pas confondre avec "password_content", le mot de passe
 # que représente un PasswordFile
+# Password to access content
+# not to be confused with "password_content", the password
+# what does a PasswordFile represent
 var password_access:String
 
 # Est zippé ?
+# Is it zipped?
 var is_zipped : bool
 
 

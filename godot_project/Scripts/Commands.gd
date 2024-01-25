@@ -1,5 +1,7 @@
 extends Node
 
+# Commands contains all the actual commands the player can perform in the game, and when one gets called,
+# it sends a signal to announce that that command has been selected.
 
 signal move(direction)
 signal change_dir(folder, is_parent, password)
@@ -68,6 +70,7 @@ func command_unzip():
 
 func command_download(password):
 	#check s'il y a un dossier à la pos du joueur
+	##check if there is a folder in the player's pos
 	var element = Globals.current_folder.getElement(Globals.player_coords)
 
 	if element!=null:
@@ -75,6 +78,7 @@ func command_download(password):
 			if element.password_access=="" or element.visited or Globals.passwords_dictionnary[element.password_access]==password.to_upper():#check mot de passe
 				if true: #zip
 					#si ok, changer de folder
+					## I'm not translating this one it's too funny -A
 					if element.type==Element.Type.CHECKPOINT_FILE:
 						Globals.player.add_checkpoint()
 						Globals.console.send_log("YELLOW:Checkpoint added")
@@ -100,6 +104,7 @@ func command_download(password):
 						element.delete()
 					else:
 						#pas sur un dossier
+						#not on a file
 						Globals.console.send_error("Not a file")
 						Globals.play_error()
 				else:
@@ -121,6 +126,7 @@ func command_download(password):
 			
 	else:
 		#pas sur un dossier
+		#not on a file
 		Globals.console.send_error("Not a file")
 		Globals.play_error()
 
@@ -142,6 +148,7 @@ func command_cd(password:String):
 		return
 	#Globals.console.send_log("CD @ (%d, %d)" % [Globals.player_coords.x, Globals.player_coords.y])
 	#check s'il y a un dossier à la pos du joueur
+	#check if there is a folder in the player's pos
 	var element = Globals.current_folder.getElement(Globals.player_coords)
 
 	if element!=null and element.type==Element.Type.FOLDER:

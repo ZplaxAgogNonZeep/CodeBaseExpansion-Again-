@@ -8,7 +8,7 @@ signal game_over()
 var console
 var player
 var player_coords: Vector2 
-var root: Folder # représente l'entièreté de la map
+var root: Folder # représente l'entièreté de la map # represents the entire map
 var current_folder: Folder
 var timer_maximal: float = 5*60
 var timer_principal: float = timer_maximal # en seconde
