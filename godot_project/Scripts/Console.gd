@@ -155,9 +155,26 @@ func _on_Input_text_entered(new_text: String) -> void:
 	# info1 seems to be used to determine the contents of a command ex. download's password and cd's password
 	
 	##################
+	# MOVE COMMANDS #
+	##################
+	
+	if splitted_tlower[0] == "move":
+		if len(splitted_tlower) > 1:
+			if splitted_tlower[1] == "up":
+				Commands.command_up() 
+			elif splitted_tlower[1] == "down":
+				Commands.command_down() 
+			elif splitted_tlower[1] == "left":
+				Commands.command_left() 
+			elif splitted_tlower[1] == "right":
+				Commands.command_right()
+		else:
+			Commands.command_move_incomplete()
+	
+	##################
 	# DEBUG COMMANDS #
 	##################
-	if tlower == "skip":
+	elif tlower == "skip":
 		Commands.command_skip()
 	elif tlower == "all_passwords":
 		Commands.command_all_passwords()
@@ -186,16 +203,6 @@ func _on_Input_text_entered(new_text: String) -> void:
 	##################
 	elif tlower == "exit" or tlower == ":q":
 		Commands.command_exit()
-	elif tlower == "move":
-		Commands.command_move_incomplete()
-	elif tlower == "move up":
-		Commands.command_up() 
-	elif tlower == "move down":
-		Commands.command_down() 
-	elif tlower == "move left":
-		Commands.command_left() 
-	elif tlower == "move right":
-		Commands.command_right()
 	elif tlower.begins_with("cd"):
 		Commands.command_cd(info1)
 	elif tlower == "passwords":
