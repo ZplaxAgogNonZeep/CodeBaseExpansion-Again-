@@ -159,15 +159,27 @@ func _on_Input_text_entered(new_text: String) -> void:
 	##################
 	
 	if splitted_tlower[0] == "move":
+		var repetitions = 1
+		
 		if len(splitted_tlower) > 1:
 			if splitted_tlower[1] == "up":
-				Commands.command_up() 
+				if len(splitted_tlower) > 2:
+					repetitions = int(splitted_tlower[2])
+				Commands.command_up(repetitions) 
 			elif splitted_tlower[1] == "down":
-				Commands.command_down() 
+				if len(splitted_tlower) > 2:
+					repetitions = int(splitted_tlower[2])
+				Commands.command_down(repetitions) 
 			elif splitted_tlower[1] == "left":
-				Commands.command_left() 
+				if len(splitted_tlower) > 2:
+					repetitions = int(splitted_tlower[2])
+				Commands.command_left(repetitions) 
 			elif splitted_tlower[1] == "right":
-				Commands.command_right()
+				if len(splitted_tlower) > 2:
+					repetitions = int(splitted_tlower[2])
+				Commands.command_right(repetitions)
+			else:
+				Commands.command_move_incomplete()
 		else:
 			Commands.command_move_incomplete()
 	

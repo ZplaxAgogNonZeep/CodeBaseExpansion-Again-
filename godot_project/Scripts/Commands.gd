@@ -39,31 +39,37 @@ func command_move_incomplete():
 		return
 	Globals.console.send_error("Missing argument")
 
-func command_up():
+func command_up(repetitions : int = 1):
 	print('doing command up')
 	if not Globals.com_enabled('move'):
 		command_not_available()
 		return
-	_send_move_signal(DIRS.DIR_UP)
 	
-func command_down():
+	for n in repetitions:
+		_send_move_signal(DIRS.DIR_UP)
+	
+func command_down(repetitions : int = 1):
 	if not Globals.com_enabled('move'):
 		command_not_available()
 		return
-	_send_move_signal(DIRS.DIR_DOWN)
 	
-func command_left():
+	for n in repetitions:
+		_send_move_signal(DIRS.DIR_DOWN)
+	
+func command_left(repetitions : int = 1):
 	if not Globals.com_enabled('move'):
 		command_not_available()
 		return
-	_send_move_signal(DIRS.DIR_LEFT)
+	for n in repetitions:
+		_send_move_signal(DIRS.DIR_LEFT)
 	
-func command_right():
+func command_right(repetitions : int = 1):
 	#print('lolololo')
 	if not Globals.com_enabled('move'):
 		command_not_available()
 		return
-	_send_move_signal(DIRS.DIR_RIGHT)
+	for n in repetitions:
+		_send_move_signal(DIRS.DIR_RIGHT)
 	
 func command_unzip():
 	pass
