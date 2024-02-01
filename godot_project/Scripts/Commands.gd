@@ -168,6 +168,7 @@ func command_cd(password:String):
 					#si ok, changer de folder
 					emit_signal("change_dir", element, element==Globals.current_folder.parent)
 					Globals.console.send_log("YELLOW:Changed directory", false)
+					Globals.console.create_ad()
 					Globals.play_chdir()
 				else:
 					Globals.console.send_log("YELLOW:Unzip before accessing")

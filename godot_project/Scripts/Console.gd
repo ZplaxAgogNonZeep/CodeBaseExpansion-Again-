@@ -16,6 +16,9 @@ var tab_hits_index_lifespan = 200
 
 var click_player
 
+var isAdMode := false
+var ad_key : String
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -154,6 +157,16 @@ func _on_Input_text_entered(new_text: String) -> void:
 		info1=splitted_tlower[1]
 	# info1 seems to be used to determine the contents of a command ex. download's password and cd's password
 	
+	# if in ad mode, all commands throw an error until the passphrase has been entered
+	if (isAdMode):
+		if tlower == ad_key:
+			isAdMode = false
+			send_log("YELLOW:Have a nice day")
+			return
+		else:
+			Commands.command_not_available()
+			return
+	
 	##################
 	# MOVE COMMANDS #
 	##################
@@ -264,6 +277,8 @@ func draw_invite():
 	draw_string(Globals.console_font, Vector2(get_console_x(), get_viewport().size.y - Globals.console_font.get_height() / 1.5), Globals.invite_text)
 	
 func send_log(log_text: String, play_sound=true):
+	# This function is what displays the text log
+	
 	if play_sound:
 		Globals.play_message()
 	var color = ""
@@ -294,3 +309,10 @@ func _on_Input_gui_input(inp: InputEventKey):
 			
 func clear_history():
 	message_history.clear()
+
+# sends an advertisement in the log and locks the players commands until they resolve the ad
+# in the future this ad might be set up to be a bit more random
+func create_ad():
+	isAdMode = true
+	send_log("Your Hackers United subscription has\nexpired!\nType 'go away' below to renew your \nsubscription", true)
+	ad_key = "go away"

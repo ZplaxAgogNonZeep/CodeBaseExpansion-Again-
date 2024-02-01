@@ -124,14 +124,17 @@ func _on_game_over_received():
 # CHANGEMENT DE FOLDER
 ###########################
 
+# This function is what changes the folder the player is in
 func _on_change_dir_signal(new_folder:Folder, is_parent:bool):
 	#placer joueur au bon endroit (étape 1)
+	#place player in the right place (step 1)
 	if is_parent:
 		Globals.player_coords = Globals.current_folder.position_grid
 	else:
 		Globals.player_coords = Globals.current_folder.position_grid_parent
 		
 	# retirer les anciens elements et placer les nouveaux
+	# remove the old elements and place the new ones
 	Globals.current_folder.delete_scene(self)
 	Globals.current_folder=new_folder
 	remove_child(Globals.player)
@@ -139,11 +142,13 @@ func _on_change_dir_signal(new_folder:Folder, is_parent:bool):
 	add_child(Globals.player)
 	
 	# retirer mot de passe
+	# remove password
 	# Globals.current_folder.password_access=""
 	
 	print("POS : ")
 	print(Globals.current_folder )
 	#placer joueur au bon endroit (étape 2 et fin)
+	#place player in the right place (step 2 and end)
 	Globals.player.set_position(GridUtils.get_physical_coords_of_grid_index(Globals.current_folder, Globals.player_coords))
 	#GridUtils.compensate_scale_pos(Globals.player.get_node("Sprite"), Globals.current_folder)
 	#GridUtils.compensate_scale_pos(Globals.player.get_node("Sprite"), Globals.current_folder)
