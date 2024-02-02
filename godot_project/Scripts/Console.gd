@@ -171,6 +171,9 @@ func _on_Input_text_entered(new_text: String) -> void:
 	# MOVE COMMANDS #
 	##################
 	
+	# if the move command is made, it will split the command up, allowing it to account for number
+	# of repetitions.
+	
 	if splitted_tlower[0] == "move":
 		var repetitions = 1
 		
