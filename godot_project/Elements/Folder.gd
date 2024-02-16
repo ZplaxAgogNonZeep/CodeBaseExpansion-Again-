@@ -83,6 +83,7 @@ func print_grid_debug():
 func initialize_scene(node_source:Node2D):
 	print("Initialise scene " + name_element)
 	# place les parents et enfants dans la scène
+	# places parents and children in the scene
 	if parent!=null:
 		node_source.add_child(parent)
 		parent.set_position_in_grid(parent.position_grid_parent)

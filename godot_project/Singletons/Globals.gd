@@ -245,10 +245,13 @@ func get_y_grid_margin():
 	
 ###########################
 # CREATION DE LA MAP
+
+# CREATION OF THE MAP
 ###########################
 
 func get_position_randomly(folder) -> Vector2:
 	#retourne aléatoirement une position vide de la grille
+	#randomly returns an empty grid position
 	var espace_libre=false
 	var pos:Vector2
 	
