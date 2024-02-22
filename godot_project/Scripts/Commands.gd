@@ -76,7 +76,7 @@ func command_unzip():
 
 func command_download(password):
 	#check s'il y a un dossier à la pos du joueur
-	##check if there is a folder in the player's pos
+	## Check for the element at the players position
 	var element = Globals.current_folder.getElement(Globals.player_coords)
 
 	if element!=null:
@@ -179,6 +179,10 @@ func command_cd(password:String):
 		else:
 			Globals.console.send_error("Access denied")
 			Globals.console.send_error("Higher privileges required")
+	elif element != null and element.type==Element.Type.GHOST_FOLDER:
+		Globals.console.send_log("RED:"+ "It's a fake! " +str(element.reduce_time)+" seconds removed")
+		Globals.timer_principal -= element.reduce_time
+		element.delete()
 	else:
 		#pas sur un dossier
 		Globals.console.send_log("YELLOW:Not a directory")

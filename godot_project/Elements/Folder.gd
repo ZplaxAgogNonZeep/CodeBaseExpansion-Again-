@@ -200,6 +200,17 @@ func addSablier(_position:Vector2):
 		child.position_grid = Globals.get_position_randomly(self)
 		children.append(child)
 
+func addGhostFolder(_position:Vector2):
+	var scene_folder = load("res://Elements/GhostFolder.tscn")
+	var child = scene_folder.instance()	
+	#var child = PriviledgeFile.new()
+		
+	child.Initialize(self,
+					_position,
+					Element.Type.GHOST_FOLDER)
+	child.position_grid = Globals.get_position_randomly(self)
+	children.append(child)
+
 
 ######################
 # ACCESSEURS BASIQUE #

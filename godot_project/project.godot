@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Elements/Folder.gd"
 }, {
 "base": "Element",
+"class": "GhostFolder",
+"language": "GDScript",
+"path": "res://Elements/GhostFolder.gd"
+}, {
+"base": "Element",
 "class": "PasswordFile",
 "language": "GDScript",
 "path": "res://Elements/PasswordFile.gd"
@@ -54,6 +59,7 @@ _global_script_class_icons={
 "CheckpointFile": "",
 "Element": "",
 "Folder": "",
+"GhostFolder": "",
 "PasswordFile": "",
 "PriviledgeFile": "",
 "Sablier": "",

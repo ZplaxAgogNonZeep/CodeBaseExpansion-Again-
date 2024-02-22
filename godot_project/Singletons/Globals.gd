@@ -267,7 +267,7 @@ func get_position_randomly(folder) -> Vector2:
 func addFolder(dossier,pos:Vector2, protection=Element.Protection.JAUNE, password="", is_zipped=false):
 	var child = load("res://Elements/Folder.tscn").instance()
 	
-	dossier.addChild(child) # ajouter folder dans la logique de la map
+	dossier.addChild(child) # ajouter folder dans la logique de la map # add folder in the map logic
 	child.Initialize(	dossier,
 						pos,
 						Element.Type.FOLDER,

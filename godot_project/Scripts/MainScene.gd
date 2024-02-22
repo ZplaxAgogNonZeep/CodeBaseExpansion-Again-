@@ -81,7 +81,8 @@ func _process(delta):
 	label_nb_salles.text = "Folders discovered: "+str(Globals.get_nb_visited_folders()) + "/" + str(Globals.get_nb_folders())
 	label_folder.text = Globals.current_folder.name_element
 	if Globals.root!=null:
-		label_depth.text = "Depth: " +str(Globals.get_current_depth()) + "/" +str(Globals.root.get_depth())
+		pass
+		#label_depth.text = "Depth: " +str(Globals.get_current_depth()) + "/" +str(Globals.root.get_depth())
 	else:
 		label_depth.text = ""
 
@@ -139,7 +140,11 @@ func _on_change_dir_signal(new_folder:Folder, is_parent:bool):
 	Globals.current_folder=new_folder
 	remove_child(Globals.player)
 	Globals.current_folder.initialize_scene(self)
+	Globals.current_folder.addGhostFolder(Vector2(0,0))
 	add_child(Globals.player)
+	
+	## This is where we can set up the ghost folder!!!!!!
+	
 	
 	# retirer mot de passe
 	# remove password
