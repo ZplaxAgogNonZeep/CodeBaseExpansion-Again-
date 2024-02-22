@@ -139,8 +139,10 @@ func _on_change_dir_signal(new_folder:Folder, is_parent:bool):
 	Globals.current_folder.delete_scene(self)
 	Globals.current_folder=new_folder
 	remove_child(Globals.player)
+	if (not is_parent):
+		Globals.current_folder.addGhostFolder(Vector2(0,0))
 	Globals.current_folder.initialize_scene(self)
-	Globals.current_folder.addGhostFolder(Vector2(0,0))
+	
 	add_child(Globals.player)
 	
 	## This is where we can set up the ghost folder!!!!!!

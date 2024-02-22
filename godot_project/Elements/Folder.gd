@@ -206,9 +206,9 @@ func addGhostFolder(_position:Vector2):
 	#var child = PriviledgeFile.new()
 		
 	child.Initialize(self,
-					_position,
+					Globals.get_position_randomly(self),
 					Element.Type.GHOST_FOLDER)
-	child.position_grid = Globals.get_position_randomly(self)
+	#child.position_grid = Globals.get_position_randomly(self)
 	children.append(child)
 
 
